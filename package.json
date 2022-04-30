@@ -17,7 +17,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "format:fix": "prettier --write \"**/*.{js,jsx,ts,tsx,json,htm,html,yml,yaml}\"",
+    "format:fix": "prettier --write \"**/*.{js,jsx,ts,tsx,json,htm,html,yml,yaml,css}\"",
     "typecheck": "tsc --project . --noEmit"
   },
   "eslintConfig": {

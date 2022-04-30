@@ -1,18 +1,18 @@
 .form {
-  font-family: "Open Sans";
+  font-family: 'Open Sans';
   display: flex;
   flex-direction: column;
 }
 
 .label {
-  font-family: "Open Sans";
+  font-family: 'Open Sans';
   color: #0f2137;
   font-weight: 600;
   margin-bottom: 8px;
 }
 
 .input {
-  font-family: "Open Sans";
+  font-family: 'Open Sans';
   font-size: 16px;
   border: 1px solid #e3e4e8;
   width: 100%;
@@ -22,14 +22,14 @@
 }
 
 .input:focus {
-  font-family: "Open Sans";
+  font-family: 'Open Sans';
   outline: none;
   border: 1px solid #62bfad;
 }
 
 .textarea {
   resize: none;
-  font-family: "Open Sans";
+  font-family: 'Open Sans';
   font-size: 16px;
   border: 1px solid #e3e4e8;
   width: 100%;
@@ -39,7 +39,7 @@
 }
 
 .textarea:focus {
-  font-family: "Open Sans";
+  font-family: 'Open Sans';
   outline: none;
   border: 1px solid #62bfad;
 }
