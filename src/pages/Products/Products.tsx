@@ -111,17 +111,17 @@ class Products extends React.Component<
     return (
       <React.Fragment>
         <div className={styles.header}>
-          <div className={classNames('container', styles.headerImageWrapper)}>
+          <div className={classNames(styles.container, styles.headerImageWrapper)}>
             <img alt="Brand logo" src={logo} className={styles.headerImage} />
           </div>
         </div>
 
-        <span className={classNames('container', styles.main, styles.heroImageContainer)}>
+        <span className={classNames(styles.container, styles.main, styles.heroImageContainer)}>
           <img alt="Two person working in the factory" src={img1} className={styles.heroImage} />
           <img alt="IT personnel working in the workplace" src={img2} className={styles.heroImage} />
         </span>
 
-        <div className={classNames('container', styles.main, styles.noPaddingTop)}>
+        <div className={classNames(styles.container, styles.main, styles.noPaddingTop)}>
           <div className={styles.buttonWrapper}>
             <span role="button">
               <Button

@@ -90,3 +90,8 @@
 .noPaddingTop {
   padding-top: 0;
 }
+
+.container {
+  max-width: 750px;
+  margin: auto;
+}
