@@ -33,10 +33,9 @@ class Products extends React.Component<
   componentDidMount() {
     document.title = 'Droppe refactor app';
 
-    fetch('https://fakestoreapi.com/products').then((response) => {
-      let jsonResponse = response.json();
-
-      jsonResponse.then((rawData) => {
+    fetch('https://fakestoreapi.com/products')
+      .then((response) => response.json())
+      .then((rawData) => {
         let data = [];
 
         for (let i = 0; i < rawData.length; i++) {
@@ -50,7 +49,6 @@ class Products extends React.Component<
           prodCount: data.length
         });
       });
-    });
   }
 
   favClick(title: string) {
