@@ -62,41 +62,49 @@ describe('Products page', () => {
   });
 
   test('Successfully send product proposal with correct title, price and description', async () => {
+    // Load product list
     render(<Products />);
-
     await waitFor(() => screen.getByTestId('products-list-container'));
 
+    // Click button for sending product proposal
     fireEvent.click(screen.getByTestId('send-product-proposal'));
 
+    // Expect form to appear
     const productForm = screen.getByTestId('form-product-proposal');
     expect(productForm).toBeVisible();
 
+    // Input the values in the form fields
     fireEvent.change(within(productForm).getByTestId('form-product-title'), { target: { value: TITLE } });
     fireEvent.change(within(productForm).getByTestId('form-product-price'), { target: { value: PRICE } });
     fireEvent.change(within(productForm).getByTestId('form-product-description'), { target: { value: DESCRIPTION } });
     fireEvent.click(within(productForm).getByTestId('submit-product-proposal'));
 
+    // Form should disappear
     await waitFor(() => expect(productForm).not.toBeVisible());
 
+    // UI should be updated with correct values
     expect(screen.getAllByTestId('product-list-item')).toHaveLength(2);
     expect(screen.getByTestId('product-count')).toHaveTextContent('Total products: 2');
-
     const firstProduct = screen.getAllByTestId('product-list-item')[0];
-
     expect(within(firstProduct).getByTestId('product-title')).toHaveTextContent(TITLE);
     expect(within(firstProduct).getByTestId('product-price')).toHaveTextContent(PRICE);
     expect(within(firstProduct).getByTestId('product-description')).toHaveTextContent(DESCRIPTION);
   });
 
   test('Add to favorites should update UI correctly', async () => {
+    // Load product list
     render(<Products />);
     await waitFor(() => screen.getByTestId('products-list-container'));
+
+    // UI should show correct counts
     expect(screen.getAllByTestId('product-list-item')).toHaveLength(1);
     expect(screen.getByTestId('favorites-count')).toHaveTextContent('Number of favorites: 0');
 
+    // UI should show updated counts
     fireEvent.click(screen.getByTestId('add-remove-favorites'));
     expect(screen.getByTestId('favorites-count')).toHaveTextContent('Number of favorites: 1');
 
+    // UI should show updated counts
     fireEvent.click(screen.getByTestId('add-remove-favorites'));
     expect(screen.getByTestId('favorites-count')).toHaveTextContent('Number of favorites: 0');
   });
