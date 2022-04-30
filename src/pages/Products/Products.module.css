@@ -38,11 +38,12 @@
 .reactModalContent {
   font-family: 'Open Sans';
   position: absolute;
-  top: 120px;
+  top: 50%;
+  transform: translateY(-50%);
   left: 0;
   right: 0;
-  bottom: 120px;
   width: 750px;
+  max-width: 100%;
   height: auto;
   margin: 0 auto;
   background: #ffffff;
@@ -51,6 +52,14 @@
   outline: none;
   padding: 24px;
   overflow: auto;
+}
+
+@media (max-width: 768px) {
+  .reactModalContent {
+    top: 0;
+    bottom: 0;
+    transform: none;
+  }
 }
 
 .reactModalOverlay {
