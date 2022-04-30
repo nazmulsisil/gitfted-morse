@@ -1,75 +1,74 @@
 import * as React from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import { Button } from 'components/Button';
 import styles from './Form.module.css';
+
+type Inputs = {
+  title: string;
+  price: string;
+  description: string;
+};
 
 type FormProps = {
   'on-submit': (payload: { title: string; description: string; price: string }) => void;
 };
 
 const Form: React.FC<FormProps> = (props) => {
-  let formRef = React.useRef<HTMLFormElement>(null);
-  let titleRef = React.useRef<HTMLInputElement>(null);
-  let priceRef = React.useRef<HTMLInputElement>(null);
-  let descriptionRef = React.useRef<HTMLTextAreaElement>(null);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset
+  } = useForm<Inputs>();
 
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
-
-    if (!titleRef.current?.value) {
-      alert('Your product needs a title');
-
-      return;
-    }
-
-    if (!descriptionRef.current?.value || !priceRef.current?.value) {
-      alert('Your product needs some content');
-
-      return;
-    }
-
+  const onSubmit: SubmitHandler<Inputs> = ({ title, description, price }) => {
     props['on-submit']({
-      title: titleRef.current && titleRef.current.value,
-      description: descriptionRef.current && descriptionRef.current.value,
-      price: priceRef.current && priceRef.current.value
+      title,
+      description,
+      price
     });
-
-    formRef.current?.reset();
+    reset();
   };
 
   return (
-    <form
-      data-testid="form-product-proposal"
-      className={styles.form}
-      onSubmit={(event) => handleSubmit(event)}
-      ref={formRef}
-    >
+    <form data-testid="form-product-proposal" className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       <span className={styles.label}>Product title: *</span>
 
       <input
         data-testid="form-product-title"
-        ref={titleRef}
         placeholder="Title..."
         defaultValue=""
         className={styles.input}
+        {...register('title', { required: true })}
       />
+      <div style={{ height: '1em', color: 'red', fontSize: '0.8em', marginBottom: '1rem' }}>
+        {errors?.title?.type === 'required' && <span>Your product needs a title</span>}
+      </div>
 
       <span className={styles.label}>Product details: *</span>
 
       <input
         data-testid="form-product-price"
-        ref={priceRef}
         placeholder="Price..."
         defaultValue=""
         className={styles.input}
+        {...register('price', { required: true, pattern: /^\d+(\.\d{1,2})?$/ })}
       />
+      <div style={{ height: '1em', color: 'red', fontSize: '0.8em', marginBottom: '1rem' }}>
+        {errors?.price?.type === 'required' && <span>Your product needs a price</span>}
+        {errors?.price?.type === 'pattern' && <span>Please provide a valid price, e.g. 10.85</span>}
+      </div>
 
       <textarea
         data-testid="form-product-description"
-        ref={descriptionRef}
         placeholder="Start typing product description here..."
         defaultValue=""
         className={styles.textarea}
+        {...register('description', { required: true })}
       />
+      <div style={{ height: '1em', color: 'red', fontSize: '0.8em', marginBottom: '1rem' }}>
+        {errors?.description?.type === 'required' && <span>Your product needs some content</span>}
+      </div>
 
       <Button testid="submit-product-proposal">Add a product</Button>
     </form>

@@ -76,7 +76,8 @@ describe('Products page', () => {
     fireEvent.change(within(productForm).getByTestId('form-product-description'), { target: { value: DESCRIPTION } });
     fireEvent.click(within(productForm).getByTestId('submit-product-proposal'));
 
-    expect(productForm).not.toBeVisible();
+    await waitFor(() => expect(productForm).not.toBeVisible());
+
     expect(screen.getAllByTestId('product-list-item')).toHaveLength(2);
     expect(screen.getByTestId('product-count')).toHaveTextContent('Total products: 2');
 
