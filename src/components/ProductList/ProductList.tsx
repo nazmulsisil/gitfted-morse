@@ -19,6 +19,7 @@ const Product: React.FC<{
   // Problem: Now product title can be too long, I just put overflowX as fix now
   return (
     <span
+      data-testid="product-list-item"
       className={productClass}
       style={{ display: 'inline-block', overflowX: 'scroll', float: 'none', clear: 'both' }}
     >
@@ -71,7 +72,7 @@ class ProductList extends React.Component<IProductListProps, {}> {
     for (const [i, p] of this.props.products.entries()) {
       productsarr.push(<Product key={i} index={i} product={p} onFav={this.props.onFav} />);
     }
-    return <div>{lodash.reverse(productsarr)}</div>;
+    return <div data-testid="products-list-container">{lodash.reverse(productsarr)}</div>;
   }
 }
 

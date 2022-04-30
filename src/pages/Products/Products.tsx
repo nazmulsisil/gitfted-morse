@@ -9,6 +9,7 @@ import logo from 'images/droppe-logo.png';
 import img1 from 'images/img1.png';
 import img2 from 'images/img2.png';
 import styles from './Products.module.css';
+import { API } from 'constants/api';
 
 interface ResponseProduct {
   id: number;
@@ -49,7 +50,7 @@ class Products extends React.Component<
   componentDidMount() {
     document.title = 'Droppe refactor app';
 
-    fetch('https://fakestoreapi.com/products')
+    fetch(API.products)
       .then((response) => response.json())
       .then((products: ResponseProduct[]) => {
         this.setState({
@@ -99,7 +100,7 @@ class Products extends React.Component<
     });
 
     // **this POST request doesn't actually post anything to any database**
-    fetch('https://fakestoreapi.com/products', {
+    fetch(API.products, {
       method: 'POST',
       body: JSON.stringify({
         title: payload.title,
