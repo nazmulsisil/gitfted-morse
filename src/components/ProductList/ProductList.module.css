@@ -15,7 +15,7 @@
   margin-bottom: 16px;
 }
 
-.product-title {
+.productTitle {
   font-size: 4rem;
   font-size: 24px;
   font-weight: 600;
@@ -28,7 +28,7 @@
   margin: 0 0 16px;
 }
 
-.action_bar {
+.actionBar {
   display: flex;
   justify-content: flex-start;
   border-top: 1px solid #e3e4ee;

@@ -20,7 +20,7 @@ const Product: React.FC<{
 
   return (
     <span data-testid="product-list-item" className={classNames(styles.productListItem, productClass)}>
-      <span data-testid="product-title" className={styles['product-title']}>
+      <span data-testid="product-title" className={styles.productTitle}>
         {product.title}
       </span>
 
@@ -40,7 +40,7 @@ const Product: React.FC<{
         {product.description}
       </p>
 
-      <span className={styles['action_bar']}>
+      <span className={styles.actionBar}>
         <span
           className={`${actionBarItem} ${product.isFavorite ? 'active' : ''}`}
           role="button"
