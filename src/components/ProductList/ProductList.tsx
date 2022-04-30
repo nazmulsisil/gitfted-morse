@@ -16,11 +16,19 @@ const Product: React.FC<{
   };
   onFav: (title: string) => void;
 }> = ({ product, onFav }) => {
-  const { product: productClass, productBody, actionBarItem, actionBarItemLabel } = styles;
+  const {
+    product: productClass,
+    productBody,
+    actionBarItem,
+    actionBarItemLabel,
+    productListItem,
+    productTitle,
+    actionBar
+  } = styles;
 
   return (
-    <span data-testid="product-list-item" className={classNames(styles.productListItem, productClass)}>
-      <span data-testid="product-title" className={styles.productTitle}>
+    <span data-testid="product-list-item" className={classNames(productListItem, productClass)}>
+      <span data-testid="product-title" className={productTitle}>
         {product.title}
       </span>
 
@@ -40,7 +48,7 @@ const Product: React.FC<{
         {product.description}
       </p>
 
-      <span className={styles.actionBar}>
+      <span className={actionBar}>
         <span
           className={classNames(actionBarItem, {
             active: product.isFavorite

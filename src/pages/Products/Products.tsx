@@ -107,22 +107,41 @@ class Products extends React.Component<
   }
 
   render() {
-    const { products, isOpen } = this.state;
+    const {
+      header,
+      container,
+      headerImageWrapper,
+      headerImage,
+      main,
+      heroImageContainer,
+      heroImage,
+      noPaddingTop,
+      buttonWrapper,
+      messageContainer,
+      statsContainer,
+      reactModalContent,
+      reactModalOverlay,
+      modalContentHelper,
+      modalClose
+    } = styles;
+
+    const { products, isOpen, isShowingMessage, message, prodCount, numFavorites } = this.state;
+
     return (
       <React.Fragment>
-        <div className={styles.header}>
-          <div className={classNames(styles.container, styles.headerImageWrapper)}>
-            <img alt="Brand logo" src={logo} className={styles.headerImage} />
+        <div className={header}>
+          <div className={classNames(container, headerImageWrapper)}>
+            <img alt="Brand logo" src={logo} className={headerImage} />
           </div>
         </div>
 
-        <span className={classNames(styles.container, styles.main, styles.heroImageContainer)}>
-          <img alt="Two person working in the factory" src={img1} className={styles.heroImage} />
-          <img alt="IT personnel working in the workplace" src={img2} className={styles.heroImage} />
+        <span className={classNames(container, main, heroImageContainer)}>
+          <img alt="Two person working in the factory" src={img1} className={heroImage} />
+          <img alt="IT personnel working in the workplace" src={img2} className={heroImage} />
         </span>
 
-        <div className={classNames(styles.container, styles.main, styles.noPaddingTop)}>
-          <div className={styles.buttonWrapper}>
+        <div className={classNames(container, main, noPaddingTop)}>
+          <div className={buttonWrapper}>
             <span role="button">
               <Button
                 testid="send-product-proposal"
@@ -135,17 +154,17 @@ class Products extends React.Component<
                 Send product proposal
               </Button>
             </span>
-            {this.state.isShowingMessage && (
-              <div className={styles.messageContainer}>
-                <i>{this.state.message}</i>
+            {isShowingMessage && (
+              <div className={messageContainer}>
+                <i>{message}</i>
               </div>
             )}
           </div>
 
-          <div className={styles.statsContainer}>
-            <span data-testid="product-count">Total products: {this.state.prodCount}</span>
+          <div className={statsContainer}>
+            <span data-testid="product-count">Total products: {prodCount}</span>
             {' - '}
-            <span data-testid="favorites-count">Number of favorites: {this.state.numFavorites}</span>
+            <span data-testid="favorites-count">Number of favorites: {numFavorites}</span>
           </div>
 
           {products && !!products.length ? <ProductList products={products} onFav={this.favClick} /> : <div></div>}
@@ -156,13 +175,13 @@ class Products extends React.Component<
         // @ts-ignore */}
         <Modal
           isOpen={isOpen}
-          className={styles.reactModalContent}
-          overlayClassName={styles.reactModalOverlay}
+          className={reactModalContent}
+          overlayClassName={reactModalOverlay}
           ariaHideApp={!IS_TEST}
         >
-          <div className={styles.modalContentHelper}>
+          <div className={modalContentHelper}>
             <div
-              className={styles.modalClose}
+              className={modalClose}
               onClick={function (this: any) {
                 this.setState({
                   isOpen: false

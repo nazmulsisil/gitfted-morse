@@ -30,31 +30,31 @@ const Form: React.FC<FormProps> = (props) => {
     reset();
   };
 
+  const { form, input, label, textarea, error } = styles;
+
   return (
-    <form data-testid="form-product-proposal" className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-      <span className={styles.label}>Product title: *</span>
+    <form data-testid="form-product-proposal" className={form} onSubmit={handleSubmit(onSubmit)}>
+      <span className={label}>Product title: *</span>
 
       <input
         data-testid="form-product-title"
         placeholder="Title..."
         defaultValue=""
-        className={styles.input}
+        className={input}
         {...register('title', { required: true })}
       />
-      <div className={styles.error}>
-        {errors?.title?.type === 'required' && <span>Your product needs a title</span>}
-      </div>
+      <div className={error}>{errors?.title?.type === 'required' && <span>Your product needs a title</span>}</div>
 
-      <span className={styles.label}>Product details: *</span>
+      <span className={label}>Product details: *</span>
 
       <input
         data-testid="form-product-price"
         placeholder="Price..."
         defaultValue=""
-        className={styles.input}
+        className={input}
         {...register('price', { required: true, pattern: /^\d+(\.\d{1,2})?$/ })}
       />
-      <div className={styles.error}>
+      <div className={error}>
         {errors?.price?.type === 'required' && <span>Your product needs a price</span>}
         {errors?.price?.type === 'pattern' && <span>Please provide a valid price, e.g. 10.85</span>}
       </div>
@@ -63,10 +63,10 @@ const Form: React.FC<FormProps> = (props) => {
         data-testid="form-product-description"
         placeholder="Start typing product description here..."
         defaultValue=""
-        className={styles.textarea}
+        className={textarea}
         {...register('description', { required: true })}
       />
-      <div className={styles.error}>
+      <div className={error}>
         {errors?.description?.type === 'required' && <span>Your product needs some content</span>}
       </div>
 
