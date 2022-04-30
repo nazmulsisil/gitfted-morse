@@ -1,10 +1,10 @@
-import * as React from "react";
-import { Button } from "./button";
-import styles from "./form.module.css";
+import * as React from 'react';
+import { Button } from './button';
+import styles from './form.module.css';
 
 type IFormProps = {
-  "on-submit": (payload: { title: string; description: string; price: string }) => void;
-}
+  'on-submit': (payload: { title: string; description: string; price: string }) => void;
+};
 
 export const Form: React.FC<IFormProps> = (props) => {
   let formRef = React.useRef<HTMLFormElement>(null);
@@ -16,21 +16,21 @@ export const Form: React.FC<IFormProps> = (props) => {
     e.preventDefault();
 
     if (!titleRef.current?.value) {
-      alert("Your product needs a title");
+      alert('Your product needs a title');
 
       return;
     }
 
     if (!descriptionRef.current?.value || !priceRef.current?.value) {
-      alert("Your product needs some content");
+      alert('Your product needs some content');
 
       return;
     }
 
-    props["on-submit"]({
+    props['on-submit']({
       title: titleRef.current && titleRef.current.value,
       description: descriptionRef.current && descriptionRef.current.value,
-      price: priceRef.current && priceRef.current.value,
+      price: priceRef.current && priceRef.current.value
     });
 
     formRef.current?.reset();
@@ -40,21 +40,11 @@ export const Form: React.FC<IFormProps> = (props) => {
     <form className={styles.form} onSubmit={(event) => handleSubmit(event)} ref={formRef}>
       <span className={styles.label}>Product title: *</span>
 
-      <input
-        ref={titleRef}
-        placeholder="Title..."
-        defaultValue=""
-        className={styles.input}
-      />
+      <input ref={titleRef} placeholder="Title..." defaultValue="" className={styles.input} />
 
       <span className={styles.label}>Product details: *</span>
 
-      <input
-        ref={priceRef}
-        placeholder="Price..."
-        defaultValue=""
-        className={styles.input}
-      />
+      <input ref={priceRef} placeholder="Price..." defaultValue="" className={styles.input} />
 
       <textarea
         ref={descriptionRef}

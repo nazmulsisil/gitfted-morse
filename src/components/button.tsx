@@ -1,5 +1,5 @@
-import * as React from "react";
-import styles from "./button.module.css";
+import * as React from 'react';
+import styles from './button.module.css';
 
 interface props {
   children: any;
