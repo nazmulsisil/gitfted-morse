@@ -28,6 +28,10 @@ class Products extends React.Component<
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = { products: [], isOpen: false, isShowingMessage: false, message: '', numFavorites: 0, prodCount: 0 };
+  }
+
+  componentDidMount() {
+    document.title = 'Droppe refactor app';
 
     fetch('https://fakestoreapi.com/products').then((response) => {
       let jsonResponse = response.json();
@@ -47,10 +51,6 @@ class Products extends React.Component<
         });
       });
     });
-  }
-
-  componentDidMount() {
-    document.title = 'Droppe refactor app';
   }
 
   favClick(title: string) {
