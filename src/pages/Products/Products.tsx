@@ -10,6 +10,7 @@ import img1 from 'images/img1.png';
 import img2 from 'images/img2.png';
 import styles from './Products.module.css';
 import { API } from 'constants/api';
+import { IS_TEST } from 'constants/app';
 
 interface ResponseProduct {
   id: number;
@@ -147,6 +148,7 @@ class Products extends React.Component<
           <div className={styles.buttonWrapper}>
             <span role="button">
               <Button
+                testid="send-product-proposal"
                 onClick={function (this: any) {
                   this.setState({
                     isOpen: true
@@ -164,9 +166,9 @@ class Products extends React.Component<
           </div>
 
           <div className={styles.statsContainer}>
-            <span>Total products: {this.state.prodCount}</span>
+            <span data-testid="product-count">Total products: {this.state.prodCount}</span>
             {' - '}
-            <span>Number of favorites: {this.state.numFavorites}</span>
+            <span data-testid="favorites-count">Number of favorites: {this.state.numFavorites}</span>
           </div>
 
           {products && !!products.length ? <ProductList products={products} onFav={this.favClick} /> : <div></div>}
@@ -175,7 +177,12 @@ class Products extends React.Component<
         {/* 
         FIXME: react-modal support for React 18 has been done but seems type issue is still there. We need to revisit https://github.com/reactjs/react-modal/issues/937#issuecomment-1111463879
         // @ts-ignore */}
-        <Modal isOpen={isOpen} className={styles.reactModalContent} overlayClassName={styles.reactModalOverlay}>
+        <Modal
+          isOpen={isOpen}
+          className={styles.reactModalContent}
+          overlayClassName={styles.reactModalOverlay}
+          ariaHideApp={!IS_TEST}
+        >
           <div className={styles.modalContentHelper}>
             <div
               className={styles.modalClose}

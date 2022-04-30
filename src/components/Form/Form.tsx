@@ -37,23 +37,41 @@ const Form: React.FC<FormProps> = (props) => {
   };
 
   return (
-    <form className={styles.form} onSubmit={(event) => handleSubmit(event)} ref={formRef}>
+    <form
+      data-testid="form-product-proposal"
+      className={styles.form}
+      onSubmit={(event) => handleSubmit(event)}
+      ref={formRef}
+    >
       <span className={styles.label}>Product title: *</span>
 
-      <input ref={titleRef} placeholder="Title..." defaultValue="" className={styles.input} />
+      <input
+        data-testid="form-product-title"
+        ref={titleRef}
+        placeholder="Title..."
+        defaultValue=""
+        className={styles.input}
+      />
 
       <span className={styles.label}>Product details: *</span>
 
-      <input ref={priceRef} placeholder="Price..." defaultValue="" className={styles.input} />
+      <input
+        data-testid="form-product-price"
+        ref={priceRef}
+        placeholder="Price..."
+        defaultValue=""
+        className={styles.input}
+      />
 
       <textarea
+        data-testid="form-product-description"
         ref={descriptionRef}
         placeholder="Start typing product description here..."
         defaultValue=""
         className={styles.textarea}
       />
 
-      <Button>Add a product</Button>
+      <Button testid="submit-product-proposal">Add a product</Button>
     </form>
   );
 };

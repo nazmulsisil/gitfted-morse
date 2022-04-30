@@ -23,7 +23,7 @@ const Product: React.FC<{
       className={productClass}
       style={{ display: 'inline-block', overflowX: 'scroll', float: 'none', clear: 'both' }}
     >
-      <span className={styles['product-title']} style={{ overflowX: 'hidden' }}>
+      <span data-testid="product-title" className={styles['product-title']} style={{ overflowX: 'hidden' }}>
         {product.title}
       </span>
 
@@ -31,11 +31,11 @@ const Product: React.FC<{
         <strong>Rating: {product.rating ? `${product.rating.rate}/5` : ''}</strong>
       </p>
 
-      <p>
+      <p data-testid="product-price">
         <b>Price: {formatPrice(product.price)}</b>
       </p>
 
-      <p className={productBody}>
+      <p data-testid="product-description" className={productBody}>
         <span>
           <b>Description:</b>
         </span>
@@ -52,7 +52,7 @@ const Product: React.FC<{
           }}
         >
           <FaStar />{' '}
-          <span className={actionBarItemLabel}>
+          <span data-testid="add-remove-favorites" className={actionBarItemLabel}>
             {!!!!product.isFavorite ? 'Remove from favorites' : 'Add to favorites'}
           </span>
         </span>
