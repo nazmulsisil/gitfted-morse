@@ -171,6 +171,9 @@ class Products extends React.Component<
           {products && !!products.length ? <ProductList products={products} onFav={this.favClick} /> : <div></div>}
         </div>
 
+        {/* 
+        FIXME: react-modal support for React 18 has been done but seems type issue is still there. We need to revisit https://github.com/reactjs/react-modal/issues/937#issuecomment-1111463879
+        // @ts-ignore */}
         <Modal isOpen={isOpen} className={styles.reactModalContent} overlayClassName={styles.reactModalOverlay}>
           <div className={styles.modalContentHelper}>
             <div
