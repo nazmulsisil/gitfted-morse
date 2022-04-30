@@ -83,8 +83,10 @@ describe('Products page', () => {
     await waitFor(() => expect(productForm).not.toBeVisible());
 
     // UI should be updated with correct values
-    expect(screen.getAllByTestId('product-list-item')).toHaveLength(2);
+    await waitFor(() => expect(screen.getAllByTestId('product-list-item')).toHaveLength(2));
     expect(screen.getByTestId('product-count')).toHaveTextContent('Total products: 2');
+
+    // newly added product should appear in the first position
     const firstProduct = screen.getAllByTestId('product-list-item')[0];
     expect(within(firstProduct).getByTestId('product-title')).toHaveTextContent(TITLE);
     expect(within(firstProduct).getByTestId('product-price')).toHaveTextContent(PRICE);

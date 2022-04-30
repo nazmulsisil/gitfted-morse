@@ -79,23 +79,8 @@ class Products extends React.Component<
   }
 
   onSubmit(payload: { title: string; description: string; price: string }) {
-    const updated = lodash.clone(this.state.products);
-    updated.push({
-      title: payload.title,
-      description: payload.description,
-      price: payload.price
-    });
-
     this.setState({
-      products: updated,
-      prodCount: lodash.size(this.state.products) + 1
-    });
-
-    this.setState({
-      isOpen: false
-    });
-
-    this.setState({
+      isOpen: false,
       isShowingMessage: true,
       message: 'Adding product...'
     });
@@ -110,15 +95,13 @@ class Products extends React.Component<
       })
     })
       .then((res) => res.json())
-      .then((json) => {
-        (function (t) {
-          setTimeout(() => {
-            t.setState({
-              isShowingMessage: false,
-              message: ''
-            });
-          }, 2000);
-        })(this);
+      .then(({ id }: Partial<ResponseProduct>) => {
+        this.setState((prevState) => ({
+          products: [...prevState.products, { id, ...payload }],
+          prodCount: prevState.prodCount + 1,
+          isShowingMessage: false,
+          message: ''
+        }));
       });
   }
 
