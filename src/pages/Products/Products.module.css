@@ -75,3 +75,18 @@
   top: 0;
   right: 0;
 }
+
+.heroImageContainer {
+  margin: 50px inherit;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.heroImage {
+  max-height: 15rem;
+  display: block;
+}
+
+.noPaddingTop {
+  padding-top: 0;
+}

@@ -115,19 +115,12 @@ class Products extends React.Component<
           </div>
         </div>
 
-        <span
-          className={['container', styles.main].join(' ')}
-          style={{ margin: '50px inherit', display: 'flex', justifyContent: 'space-evenly' }}
-        >
-          <img alt="Two person working in the factory" src={img1} style={{ maxHeight: '15em', display: 'block' }} />
-          <img
-            alt="IT personnel working in the workplace"
-            src={img2}
-            style={{ maxHeight: '15rem', display: 'block' }}
-          />
+        <span className={['container', styles.main, styles.heroImageContainer].join(' ')}>
+          <img alt="Two person working in the factory" src={img1} className={styles.heroImage} />
+          <img alt="IT personnel working in the workplace" src={img2} className={styles.heroImage} />
         </span>
 
-        <div className={['container', styles.main].join(' ')} style={{ paddingTop: 0 }}>
+        <div className={['container', styles.main, styles.noPaddingTop].join(' ')}>
           <div className={styles.buttonWrapper}>
             <span role="button">
               <Button

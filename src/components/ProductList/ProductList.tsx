@@ -3,6 +3,7 @@ import lodash from 'lodash';
 import { FaStar } from 'react-icons/fa';
 import styles from './ProductList.module.css';
 import { formatPrice } from 'utils/formatPrice';
+import classNames from 'classnames';
 
 const Product: React.FC<{
   index: number;
@@ -16,14 +17,10 @@ const Product: React.FC<{
   onFav: (title: string) => void;
 }> = ({ product, onFav }) => {
   const { product: productClass, productBody, actionBarItem, actionBarItemLabel } = styles;
-  // Problem: Now product title can be too long, I just put overflowX as fix now
+
   return (
-    <span
-      data-testid="product-list-item"
-      className={productClass}
-      style={{ display: 'inline-block', overflowX: 'scroll', float: 'none', clear: 'both' }}
-    >
-      <span data-testid="product-title" className={styles['product-title']} style={{ overflowX: 'hidden' }}>
+    <span data-testid="product-list-item" className={classNames(styles.productListItem, productClass)}>
+      <span data-testid="product-title" className={styles['product-title']}>
         {product.title}
       </span>
 
@@ -43,7 +40,7 @@ const Product: React.FC<{
         {product.description}
       </p>
 
-      <span className={styles['action_bar']} style={{ display: 'table', width: '100%' }}>
+      <span className={styles['action_bar']}>
         <span
           className={`${actionBarItem} ${product.isFavorite ? 'active' : ''}`}
           role="button"

@@ -43,3 +43,10 @@
   outline: none;
   border: 1px solid #62bfad;
 }
+
+.error {
+  height: 1em;
+  color: #ff0000;
+  font-size: 0.8em;
+  margin-bottom: 1rem;
+}

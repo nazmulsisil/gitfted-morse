@@ -41,7 +41,7 @@ const Form: React.FC<FormProps> = (props) => {
         className={styles.input}
         {...register('title', { required: true })}
       />
-      <div style={{ height: '1em', color: 'red', fontSize: '0.8em', marginBottom: '1rem' }}>
+      <div className={styles.error}>
         {errors?.title?.type === 'required' && <span>Your product needs a title</span>}
       </div>
 
@@ -54,7 +54,7 @@ const Form: React.FC<FormProps> = (props) => {
         className={styles.input}
         {...register('price', { required: true, pattern: /^\d+(\.\d{1,2})?$/ })}
       />
-      <div style={{ height: '1em', color: 'red', fontSize: '0.8em', marginBottom: '1rem' }}>
+      <div className={styles.error}>
         {errors?.price?.type === 'required' && <span>Your product needs a price</span>}
         {errors?.price?.type === 'pattern' && <span>Please provide a valid price, e.g. 10.85</span>}
       </div>
@@ -66,7 +66,7 @@ const Form: React.FC<FormProps> = (props) => {
         className={styles.textarea}
         {...register('description', { required: true })}
       />
-      <div style={{ height: '1em', color: 'red', fontSize: '0.8em', marginBottom: '1rem' }}>
+      <div className={styles.error}>
         {errors?.description?.type === 'required' && <span>Your product needs some content</span>}
       </div>
 
