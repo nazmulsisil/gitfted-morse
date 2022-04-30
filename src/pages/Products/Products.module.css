@@ -32,7 +32,7 @@
 }
 
 .reactModalContent {
-  font-family: "Open Sans";
+  font-family: 'Open Sans';
   position: absolute;
   top: 120px;
   left: 0;
@@ -50,7 +50,7 @@
 }
 
 .reactModalOverlay {
-  font-family: "Open Sans";
+  font-family: 'Open Sans';
   position: fixed;
   top: 0;
   left: 0;

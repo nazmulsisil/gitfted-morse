@@ -1,24 +1,9 @@
 import * as React from 'react';
 import lodash from 'lodash';
 import { FaStar } from 'react-icons/fa';
-import styles from './product-list-components.module.css';
+import styles from './ProductList.module.css';
 
-interface IPostsProps {
-  products: any;
-  onFav: (title: string) => void;
-}
-
-export default class Posts extends React.Component<IPostsProps, {}> {
-  render() {
-    let productsarr = [];
-    for (const [i, p] of this.props.products.entries()) {
-      productsarr.push(<Product key={i} index={i} product={p} onFav={this.props.onFav} />);
-    }
-    return <div>{lodash.reverse(productsarr)}</div>;
-  }
-}
-
-export const Product: React.FC<{
+const Product: React.FC<{
   index: number;
   product: {
     title: string;
@@ -73,3 +58,20 @@ export const Product: React.FC<{
     </span>
   );
 };
+
+interface IProductListProps {
+  products: any;
+  onFav: (title: string) => void;
+}
+
+class ProductList extends React.Component<IProductListProps, {}> {
+  render() {
+    let productsarr = [];
+    for (const [i, p] of this.props.products.entries()) {
+      productsarr.push(<Product key={i} index={i} product={p} onFav={this.props.onFav} />);
+    }
+    return <div>{lodash.reverse(productsarr)}</div>;
+  }
+}
+
+export default ProductList;

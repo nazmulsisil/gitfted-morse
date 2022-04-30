@@ -2,14 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import './index.css';
-import { ShopApp } from './shop-app';
+import { Products } from 'pages/Products';
 import * as serviceWorker from './serviceWorker';
 
 Modal.setAppElement('#root');
 
 ReactDOM.render(
   <React.StrictMode>
-    <ShopApp />
+    <Products />
   </React.StrictMode>,
   document.getElementById('root')
 );
