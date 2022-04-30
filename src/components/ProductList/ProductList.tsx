@@ -2,7 +2,7 @@ import * as React from 'react';
 import lodash from 'lodash';
 import { FaStar } from 'react-icons/fa';
 import styles from './ProductList.module.css';
-import { formatPrice } from 'utils/fomatPrice';
+import { formatPrice } from 'utils/formatPrice';
 
 const Product: React.FC<{
   index: number;

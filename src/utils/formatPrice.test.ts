@@ -1,4 +1,4 @@
-import { formatPrice } from './fomatPrice';
+import { formatPrice } from './formatPrice';
 
 describe('Price should be formatted correctly', () => {
   test('Format price from string', () => {
