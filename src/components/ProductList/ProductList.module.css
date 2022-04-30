@@ -22,6 +22,8 @@
   margin: 0 0 16px;
   white-space: nowrap;
   overflow-x: hidden;
+  text-overflow: ellipsis;
+  display: block;
 }
 
 .productBody {
@@ -60,7 +62,6 @@
 
 .productListItem {
   display: inline-block;
-  overflow-x: scroll;
   float: none;
   clear: both;
 }
