@@ -42,7 +42,9 @@ const Product: React.FC<{
 
       <span className={styles.actionBar}>
         <span
-          className={`${actionBarItem} ${product.isFavorite ? 'active' : ''}`}
+          className={classNames(actionBarItem, {
+            active: product.isFavorite
+          })}
           role="button"
           onClick={() => {
             onFav(product.title);

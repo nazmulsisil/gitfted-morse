@@ -11,6 +11,7 @@ import img2 from 'images/img2.png';
 import styles from './Products.module.css';
 import { API } from 'constants/api';
 import { IS_TEST } from 'constants/app';
+import classNames from 'classnames';
 
 interface ResponseProduct {
   id: number;
@@ -110,17 +111,17 @@ class Products extends React.Component<
     return (
       <React.Fragment>
         <div className={styles.header}>
-          <div className={['container', styles.headerImageWrapper].join(' ')}>
+          <div className={classNames('container', styles.headerImageWrapper)}>
             <img alt="Brand logo" src={logo} className={styles.headerImage} />
           </div>
         </div>
 
-        <span className={['container', styles.main, styles.heroImageContainer].join(' ')}>
+        <span className={classNames('container', styles.main, styles.heroImageContainer)}>
           <img alt="Two person working in the factory" src={img1} className={styles.heroImage} />
           <img alt="IT personnel working in the workplace" src={img2} className={styles.heroImage} />
         </span>
 
-        <div className={['container', styles.main, styles.noPaddingTop].join(' ')}>
+        <div className={classNames('container', styles.main, styles.noPaddingTop)}>
           <div className={styles.buttonWrapper}>
             <span role="button">
               <Button
