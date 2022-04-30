@@ -2,6 +2,7 @@ import * as React from 'react';
 import lodash from 'lodash';
 import { FaStar } from 'react-icons/fa';
 import styles from './ProductList.module.css';
+import { formatPrice } from 'utils/fomatPrice';
 
 const Product: React.FC<{
   index: number;
@@ -30,7 +31,7 @@ const Product: React.FC<{
       </p>
 
       <p>
-        <b>Price: ${+product.price}</b>
+        <b>Price: {formatPrice(product.price)}</b>
       </p>
 
       <p className={productBody}>
