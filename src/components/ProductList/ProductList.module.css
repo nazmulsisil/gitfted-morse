@@ -28,6 +28,7 @@
 
 .productBody {
   margin: 0 0 16px;
+  word-break: break-word;
 }
 
 .actionBar {
