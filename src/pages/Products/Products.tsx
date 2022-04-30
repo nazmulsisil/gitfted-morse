@@ -10,6 +10,15 @@ import img1 from 'images/img1.png';
 import img2 from 'images/img2.png';
 import styles from './Products.module.css';
 
+interface ResponseProduct {
+  id: number;
+  title: string;
+  price: string;
+  category: string;
+  description: string;
+  image: string;
+}
+
 class Products extends React.Component<
   {},
   {
@@ -27,7 +36,14 @@ class Products extends React.Component<
     this.favClick = this.favClick.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
-    this.state = { products: [], isOpen: false, isShowingMessage: false, message: '', numFavorites: 0, prodCount: 0 };
+    this.state = {
+      products: [],
+      isOpen: false,
+      isShowingMessage: false,
+      message: '',
+      numFavorites: 0,
+      prodCount: 0
+    };
   }
 
   componentDidMount() {
@@ -35,18 +51,10 @@ class Products extends React.Component<
 
     fetch('https://fakestoreapi.com/products')
       .then((response) => response.json())
-      .then((rawData) => {
-        let data = [];
-
-        for (let i = 0; i < rawData.length; i++) {
-          let updatedProd = rawData[i];
-          data.push(updatedProd);
-        }
+      .then((products: ResponseProduct[]) => {
         this.setState({
-          products: data
-        });
-        this.setState({
-          prodCount: data.length
+          products,
+          prodCount: products.length
         });
       });
   }
