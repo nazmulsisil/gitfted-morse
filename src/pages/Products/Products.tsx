@@ -128,7 +128,7 @@ class Products extends React.Component<
     const { products, isOpen, isShowingMessage, message, prodCount, numFavorites } = this.state;
 
     return (
-      <React.Fragment>
+      <div className={styles.productsContainer}>
         <div className={header}>
           <div className={classNames(container, headerImageWrapper)}>
             <img alt="Brand logo" src={logo} className={headerImage} />
@@ -194,7 +194,7 @@ class Products extends React.Component<
             <Form on-submit={this.onSubmit} />
           </div>
         </Modal>
-      </React.Fragment>
+      </div>
     );
   }
 }
