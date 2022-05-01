@@ -5,16 +5,18 @@ import { formatPrice } from 'utils/formatPrice';
 import classNames from 'classnames';
 import { Button } from 'components/Button';
 
+interface ProductItem {
+  id: number;
+  title: string;
+  description: string;
+  price: number;
+  isFavorite: boolean;
+  rating: { rate: number; count: number };
+}
+
 const Product: React.FC<{
-  index: number;
-  product: {
-    title: string;
-    description: string;
-    price: number;
-    isFavorite: boolean;
-    rating: { rate: number; count: number };
-  };
-  onFav: (title: string) => void;
+  product: ProductItem;
+  onFav: (id: number) => void;
 }> = ({ product, onFav }) => {
   const {
     product: productClass,
@@ -54,7 +56,7 @@ const Product: React.FC<{
             active: product.isFavorite
           })}
           onClick={() => {
-            onFav(product.title);
+            onFav(product.id);
           }}
         >
           <FaStar />{' '}
@@ -68,18 +70,16 @@ const Product: React.FC<{
 };
 
 interface IProductListProps {
-  products: any;
-  onFav: (title: string) => void;
+  products: ProductItem[];
+  onFav: (id: number) => void;
 }
 
-class ProductList extends React.Component<IProductListProps, {}> {
-  render() {
-    let productsarr = [];
-    for (const [i, p] of this.props.products.entries()) {
-      productsarr.push(<Product key={i} index={i} product={p} onFav={this.props.onFav} />);
-    }
-    return <div data-testid="products-list-container">{[...productsarr].reverse()}</div>;
-  }
-}
+export const ProductList = ({ products, onFav }: IProductListProps) => (
+  <div data-testid="products-list-container">
+    {products.map((product) => (
+      <Product key={product.id} product={product} onFav={onFav} />
+    ))}
+  </div>
+);
 
 export default ProductList;

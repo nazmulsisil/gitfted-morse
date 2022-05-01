@@ -16,9 +16,7 @@ interface ResponseProduct {
   id: number;
   title: string;
   price: string;
-  category: string;
   description: string;
-  image: string;
 }
 
 class Products extends React.Component<
@@ -61,9 +59,9 @@ class Products extends React.Component<
       });
   }
 
-  favClick(title: string) {
+  favClick(id: number) {
     const prods = this.state.products;
-    const idx = prods.findIndex((el) => el.title === title);
+    const idx = prods.findIndex((el) => el.id === id);
     let currentFavs = this.state.numFavorites;
     let totalFavs: any;
 
@@ -97,7 +95,7 @@ class Products extends React.Component<
       .then((res) => res.json())
       .then(({ id }: Partial<ResponseProduct>) => {
         this.setState((prevState) => ({
-          products: [...prevState.products, { id, ...payload }],
+          products: [{ id, ...payload }, ...prevState.products],
           prodCount: prevState.prodCount + 1,
           isShowingMessage: false,
           message: ''

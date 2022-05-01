@@ -28,17 +28,9 @@ const server = setupServer(
   }),
   rest.post(API.products, (_req, res, ctx) => {
     return res(
-      ctx.json([
-        {
-          id: 1,
-          title: TITLE,
-          price: PRICE,
-          description: DESCRIPTION,
-          category: "men's clothing",
-          image: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
-          rating: { rate: 3.9, count: 120 }
-        }
-      ])
+      ctx.json({
+        id: 2
+      })
     );
   })
 );
