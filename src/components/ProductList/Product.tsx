@@ -30,18 +30,20 @@ export const Product: React.FC<{
     actionBar
   } = styles;
 
+  const { title, rating, price, description, isFavorite, id } = product;
+
   return (
     <span data-testid="product-list-item" className={classNames(productListItem, productClass)}>
       <span data-testid="product-title" className={productTitle}>
-        {product.title}
+        {title}
       </span>
 
       <p>
-        <strong>Rating: {product.rating ? `${product.rating.rate}/5` : ''}</strong>
+        <strong>Rating: {rating ? `${rating.rate}/5` : ''}</strong>
       </p>
 
       <p data-testid="product-price">
-        <b>Price: {formatPrice(product.price)}</b>
+        <b>Price: {formatPrice(price)}</b>
       </p>
 
       <p data-testid="product-description" className={productBody}>
@@ -49,21 +51,21 @@ export const Product: React.FC<{
           <b>Description:</b>
         </span>
         <br />
-        {product.description}
+        {description}
       </p>
 
       <span className={actionBar}>
         <Button
           className={classNames(actionBarItem, {
-            active: product.isFavorite
+            active: isFavorite
           })}
           onClick={() => {
-            onFav(product.id, !product.isFavorite);
+            onFav(id, !isFavorite);
           }}
         >
           <FaStar />{' '}
           <span data-testid="add-remove-favorites" className={actionBarItemLabel}>
-            {!!!!product.isFavorite ? 'Remove from favorites' : 'Add to favorites'}
+            {!!isFavorite ? 'Remove from favorites' : 'Add to favorites'}
           </span>
         </Button>
       </span>
