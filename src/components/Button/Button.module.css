@@ -1,9 +1,9 @@
 .button {
   border: 0;
   cursor: pointer;
-  color: #ffffff;
-  font-size: 18px;
-  background-color: #62bfad;
+  color: var(--on-primary);
+  font-size: var(--button-font-size);
+  background-color: var(--primary);
   border: 0px;
   border-radius: 10px;
   width: 100%;

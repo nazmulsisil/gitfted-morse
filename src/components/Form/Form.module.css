@@ -4,14 +4,15 @@
 }
 
 .label {
-  color: #0f2137;
+  color: var(--on-surface);
   font-weight: 600;
   margin-bottom: 8px;
 }
 
 .input {
-  font-family: 'Open Sans';
-  font-size: 16px;
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size);
+  font-weight: var(--body-font-weight);
   border: 1px solid #e3e4e8;
   width: 100%;
   height: 40px;
@@ -26,8 +27,9 @@
 
 .textarea {
   resize: none;
-  font-family: 'Open Sans';
-  font-size: 16px;
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size);
+  font-weight: var(--body-font-weight);
   border: 1px solid #e3e4e8;
   width: 100%;
   height: 120px;
@@ -42,7 +44,9 @@
 
 .error {
   height: 1em;
-  color: #ff0000;
-  font-size: 0.8em;
+  color: var(--error);
   margin-bottom: 1rem;
+  font-family: var(--caption-font-family);
+  font-size: var(--caption-font-size);
+  font-weight: var(--caption-font-weight);
 }

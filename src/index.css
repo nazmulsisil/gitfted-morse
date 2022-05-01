@@ -1,17 +1,38 @@
+:root {
+  --primary: #62bfad;
+  --on-primary: #ffffff;
+  --surface: #ffffff;
+  --on-surface: #0f2137;
+  --surface-hover: #f4f5f9;
+  --surface-variant: #f8f8f8;
+  --on-surface-variant: #7c7c7c;
+  --heading-font-family: 'Open Sans';
+  --heading-font-size: 1.5rem;
+  --heading-font-weight: 600;
+  --body-font-family: 'Open Sans';
+  --body-font-size: 1rem;
+  --body-font-weight: 400;
+  --caption-font-family: 'Open Sans';
+  --caption-font-size: 0.875rem;
+  --caption-font-weight: 400;
+  --button-font-size: 1.125rem;
+  --error: #dc3545;
+  --border: #e3e4e8;
+  --black: #000000;
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
-  color: #7c7c7c;
+  color: var(--on-surface-variant);
   font-family: 'Open Sans', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  font-weight: 400;
-  background-color: #f8f8f8;
+  font-size: var(--body-font-size);
+  font-weight: var(--body-font-weight);
+  line-height: 1.5;
+  background-color: var(--surface-variant);
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }

@@ -1,7 +1,7 @@
 .product {
-  color: #0f2137;
-  background-color: #ffffff;
-  border: 1px solid #e3e4e8;
+  color: var(--on-surface);
+  background-color: var(--surface);
+  border: 1px solid var(--border);
   padding: 16px 12px 9px;
   border-radius: 6px;
   width: 100%;
@@ -15,8 +15,9 @@
 }
 
 .productTitle {
-  font-size: 24px;
-  font-weight: 600;
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size);
+  font-weight: var(--heading-font-weight);
   margin: 0 0 16px;
   white-space: nowrap;
   overflow-x: hidden;
@@ -43,18 +44,19 @@ button.actionBarItem {
   justify-content: center;
   align-items: center;
   padding: 8px;
-  background-color: #ffffff;
-  color: #0f2137;
-  font-size: 16px;
-  font-family: 'Open Sans';
+  background-color: var(--surface);
+  color: var(--on-surface);
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size);
+  font-weight: var(--body-font-weight);
 }
 
 button.actionBarItem:hover {
-  background-color: #f4f5f9;
+  background-color: var(--surface-hover);
 }
 
 button.actionBarItem:global(.active) {
-  color: #62bfad;
+  color: var(--primary);
 }
 
 .actionBarItemLabel {

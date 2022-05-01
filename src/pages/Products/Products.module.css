@@ -36,7 +36,6 @@
 }
 
 .reactModalContent {
-  font-family: 'Open Sans';
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -63,7 +62,6 @@
 }
 
 .reactModalOverlay {
-  font-family: 'Open Sans';
   position: fixed;
   top: 0;
   left: 0;
@@ -81,7 +79,7 @@
 
 .modalClose {
   cursor: pointer;
-  color: rgba(0, 0, 0, 1);
+  color: var(--black);
   font-size: 24px;
   line-height: 0;
   position: absolute;
