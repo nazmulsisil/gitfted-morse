@@ -76,7 +76,9 @@ const Form: React.FC<FormProps> = (props) => {
         {errors?.description?.type === 'required' && <span>Your product needs some content</span>}
       </div>
 
-      <Button testid="submit-product-proposal">Add a product</Button>
+      <Button type="submit" testid="submit-product-proposal">
+        Add a product
+      </Button>
     </form>
   );
 };

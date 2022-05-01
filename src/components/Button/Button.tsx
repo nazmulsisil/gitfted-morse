@@ -7,10 +7,12 @@ interface props {
   onClick?: () => void;
   testid?: string;
   className?: string;
+  type?: 'button' | 'submit' | 'reset' | undefined;
 }
 
-const Button: React.FC<props> = ({ children, onClick, testid, className }) => (
+const Button: React.FC<props> = ({ children, onClick, testid, className, type }) => (
   <button
+    type={type}
     className={classNames(styles.button, className)}
     onClick={onClick}
     {...(testid ? { 'data-testid': testid } : {})}
