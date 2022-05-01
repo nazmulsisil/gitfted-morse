@@ -79,6 +79,14 @@ class Products extends React.Component<
       });
   }
 
+  componentDidUpdate() {
+    document.body.style.overflow = this.state.isOpen ? 'hidden' : 'unset';
+  }
+
+  componentWillUnmount() {
+    document.body.style.overflow = 'unset';
+  }
+
   favClick(id: number, favorite: boolean) {
     const updated = [...this.state.products].map((product) =>
       product.id === id ? { ...product, isFavorite: favorite } : product
