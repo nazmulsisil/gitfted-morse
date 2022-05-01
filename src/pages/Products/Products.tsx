@@ -11,6 +11,7 @@ import styles from './Products.module.css';
 import { API } from 'constants/api';
 import { IS_TEST } from 'constants/app';
 import classNames from 'classnames';
+import { ProductItem } from 'components/ProductList/Product';
 
 interface ResponseProduct {
   id: number;
@@ -22,7 +23,7 @@ interface ResponseProduct {
 class Products extends React.Component<
   {},
   {
-    products: any[];
+    products: ProductItem[];
     isOpen: boolean;
     isShowingMessage: boolean;
     message: string;
@@ -93,9 +94,9 @@ class Products extends React.Component<
       })
     })
       .then((res) => res.json())
-      .then(({ id }: Partial<ResponseProduct>) => {
+      .then(({ id }: { id: number }) => {
         this.setState((prevState) => ({
-          products: [{ id, ...payload }, ...prevState.products],
+          products: [{ ...payload, id }, ...prevState.products],
           prodCount: prevState.prodCount + 1,
           isShowingMessage: false,
           message: ''

@@ -9,9 +9,9 @@ export interface ProductItem {
   id: number;
   title: string;
   description: string;
-  price: number;
-  isFavorite: boolean;
-  rating: { rate: number; count: number };
+  price: string;
+  isFavorite?: boolean;
+  rating?: { rate: number; count: number };
 }
 
 export const Product: React.FC<{
