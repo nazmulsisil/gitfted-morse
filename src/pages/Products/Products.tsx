@@ -4,9 +4,9 @@ import { FaTimes } from 'react-icons/fa';
 import { Button } from 'components/Button';
 import { ProductList } from 'components/ProductList';
 import { Form } from 'components/Form';
-import logo from 'images/droppe-logo.png';
-import img1 from 'images/img1.png';
-import img2 from 'images/img2.png';
+import logo from 'images/droppeLogo.png';
+import heroImage1 from 'images/heroImage1.png';
+import heroImage2 from 'images/heroImage2.png';
 import styles from './Products.module.css';
 import { API } from 'constants/api';
 import { IS_TEST, PRODUCT_PROPOSAL_ERROR_MESSAGE } from 'constants/app';
@@ -170,8 +170,8 @@ class Products extends React.Component<
         </div>
 
         <span className={classNames(container, main, heroImageContainer)}>
-          <img alt="Two person working in the factory" src={img1} className={heroImage} />
-          <img alt="IT personnel working in the workplace" src={img2} className={heroImage} />
+          <img alt="Two person working in the factory" src={heroImage1} className={heroImage} />
+          <img alt="IT personnel working in the workplace" src={heroImage2} className={heroImage} />
         </span>
 
         <div className={classNames(container, main, noPaddingTop)}>
