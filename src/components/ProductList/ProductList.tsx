@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Product, ProductItem } from './Product';
+import { OnFav, Product, ProductItem } from './Product';
 
 interface IProductListProps {
   products: ProductItem[];
-  onFav: (id: number) => void;
+  onFav: OnFav;
 }
 
 export const ProductList = ({ products, onFav }: IProductListProps) => (

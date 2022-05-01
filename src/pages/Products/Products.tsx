@@ -60,21 +60,15 @@ class Products extends React.Component<
       });
   }
 
-  favClick(id: number) {
-    const prods = this.state.products;
-    const idx = prods.findIndex((el) => el.id === id);
-    let currentFavs = this.state.numFavorites;
-    let totalFavs: number;
+  favClick(id: number, favorite: boolean) {
+    const updated = [...this.state.products].map((product) =>
+      product.id === id ? { ...product, isFavorite: favorite } : product
+    );
 
-    if (prods[idx].isFavorite) {
-      prods[idx].isFavorite = false;
-      totalFavs = --currentFavs;
-    } else {
-      totalFavs = ++currentFavs;
-      prods[idx].isFavorite = true;
-    }
-
-    this.setState(() => ({ products: prods, numFavorites: totalFavs }));
+    this.setState({
+      products: updated,
+      numFavorites: this.state.numFavorites + (favorite ? 1 : -1)
+    });
   }
 
   onSubmit(payload: { title: string; description: string; price: string }) {

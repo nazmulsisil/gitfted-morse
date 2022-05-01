@@ -14,9 +14,11 @@ export interface ProductItem {
   rating?: { rate: number; count: number };
 }
 
+export type OnFav = (id: number, favorite: boolean) => void;
+
 export const Product: React.FC<{
   product: ProductItem;
-  onFav: (id: number) => void;
+  onFav: OnFav;
 }> = ({ product, onFav }) => {
   const {
     product: productClass,
@@ -56,7 +58,7 @@ export const Product: React.FC<{
             active: product.isFavorite
           })}
           onClick={() => {
-            onFav(product.id);
+            onFav(product.id, !product.isFavorite);
           }}
         >
           <FaStar />{' '}
