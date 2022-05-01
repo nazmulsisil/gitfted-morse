@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import './index.css';
 import { Products } from 'pages/Products';
@@ -7,11 +7,13 @@ import * as serviceWorker from './serviceWorker';
 
 Modal.setAppElement('#root');
 
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
-root.render(
+// TODO: revisit create-react-app latest versions. Check if initial extra rerender still happens. If doesn't happen, then use to git rid of console warning "Warning: ReactDOM.render is no longer supported in React 18. Use createRoot instead. Until you switch to the new API, your app will behave as if it's running React 17."
+
+ReactDOM.render(
   <React.StrictMode>
     <Products />
-  </React.StrictMode>
+  </React.StrictMode>,
+  document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change
