@@ -142,18 +142,17 @@ class Products extends React.Component<
 
         <div className={classNames(container, main, noPaddingTop)}>
           <div className={buttonWrapper}>
-            <span role="button">
-              <Button
-                testid="send-product-proposal"
-                onClick={function (this: any) {
-                  this.setState({
-                    isOpen: true
-                  });
-                }.bind(this)}
-              >
-                Send product proposal
-              </Button>
-            </span>
+            <Button
+              testid="send-product-proposal"
+              onClick={function (this: any) {
+                this.setState({
+                  isOpen: true
+                });
+              }.bind(this)}
+            >
+              Send product proposal
+            </Button>
+
             {isShowingMessage && (
               <div className={messageContainer}>
                 <i>{message}</i>
