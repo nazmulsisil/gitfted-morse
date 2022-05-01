@@ -1,5 +1,4 @@
 import * as React from 'react';
-import lodash from 'lodash';
 import Modal from 'react-modal';
 import { FaTimes } from 'react-icons/fa';
 import { Button } from 'components/Button';
@@ -64,7 +63,7 @@ class Products extends React.Component<
 
   favClick(title: string) {
     const prods = this.state.products;
-    const idx = lodash.findIndex(prods, { title: title });
+    const idx = prods.findIndex((el) => el.title === title);
     let currentFavs = this.state.numFavorites;
     let totalFavs: any;
 

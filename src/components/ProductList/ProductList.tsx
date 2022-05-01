@@ -1,5 +1,4 @@
 import * as React from 'react';
-import lodash from 'lodash';
 import { FaStar } from 'react-icons/fa';
 import styles from './ProductList.module.css';
 import { formatPrice } from 'utils/formatPrice';
@@ -79,7 +78,7 @@ class ProductList extends React.Component<IProductListProps, {}> {
     for (const [i, p] of this.props.products.entries()) {
       productsarr.push(<Product key={i} index={i} product={p} onFav={this.props.onFav} />);
     }
-    return <div data-testid="products-list-container">{lodash.reverse(productsarr)}</div>;
+    return <div data-testid="products-list-container">{[...productsarr].reverse()}</div>;
   }
 }
 
