@@ -9,7 +9,7 @@ import img1 from 'images/img1.png';
 import img2 from 'images/img2.png';
 import styles from './Products.module.css';
 import { API } from 'constants/api';
-import { IS_TEST } from 'constants/app';
+import { IS_TEST, PRODUCT_PROPOSAL_ERROR_MESSAGE } from 'constants/app';
 import classNames from 'classnames';
 import { ProductItem } from 'components/ProductList/Product';
 
@@ -17,7 +17,9 @@ interface ResponseProduct {
   id: number;
   title: string;
   price: string;
+  category: string;
   description: string;
+  image: string;
 }
 
 class Products extends React.Component<
@@ -29,6 +31,8 @@ class Products extends React.Component<
     message: string;
     numFavorites: number;
     prodCount: number;
+    loading: boolean;
+    error: boolean;
   }
 > {
   constructor(props: {}) {
@@ -43,7 +47,9 @@ class Products extends React.Component<
       isShowingMessage: false,
       message: '',
       numFavorites: 0,
-      prodCount: 0
+      prodCount: 0,
+      loading: true,
+      error: false
     };
   }
 
@@ -51,11 +57,24 @@ class Products extends React.Component<
     document.title = 'Droppe refactor app';
 
     fetch(API.products)
-      .then((response) => response.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('Network response was not OK');
+        }
+
+        return res.json();
+      })
       .then((products: ResponseProduct[]) => {
         this.setState({
           products,
-          prodCount: products.length
+          prodCount: products.length,
+          loading: false
+        });
+      })
+      .catch(() => {
+        this.setState({
+          loading: false,
+          error: true
         });
       });
   }
@@ -87,7 +106,13 @@ class Products extends React.Component<
         description: payload.description
       })
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('Network response was not OK');
+        }
+
+        return res.json();
+      })
       .then(({ id }: { id: number }) => {
         this.setState((prevState) => ({
           products: [{ ...payload, id }, ...prevState.products],
@@ -95,6 +120,11 @@ class Products extends React.Component<
           isShowingMessage: false,
           message: ''
         }));
+      })
+      .catch(() => {
+        this.setState({
+          message: PRODUCT_PROPOSAL_ERROR_MESSAGE
+        });
       });
   }
 
@@ -117,7 +147,11 @@ class Products extends React.Component<
       modalClose
     } = styles;
 
-    const { products, isOpen, isShowingMessage, message, prodCount, numFavorites } = this.state;
+    const { products, isOpen, isShowingMessage, message, prodCount, numFavorites, loading, error } = this.state;
+
+    const showProducts = !loading && !error && products?.length > 0;
+    const noProductFound = !loading && !error && products?.length === 0;
+    const showError = !loading && !showProducts && !noProductFound;
 
     return (
       <div className={styles.productsContainer}>
@@ -146,7 +180,7 @@ class Products extends React.Component<
             </Button>
 
             {isShowingMessage && (
-              <div className={messageContainer}>
+              <div data-testid="product-message" className={messageContainer}>
                 <i>{message}</i>
               </div>
             )}
@@ -158,7 +192,10 @@ class Products extends React.Component<
             <span data-testid="favorites-count">Number of favorites: {numFavorites}</span>
           </div>
 
-          {products && !!products.length ? <ProductList products={products} onFav={this.favClick} /> : <div></div>}
+          {loading && <div>loading...</div>}
+          {noProductFound && <div data-testid="no-product-found">No products found!</div>}
+          {showProducts && <ProductList products={products} onFav={this.favClick} />}
+          {showError && <div data-testid="product-fetch-failed">Something went wrong!</div>}
         </div>
 
         {/* 

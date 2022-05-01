@@ -4,6 +4,7 @@ import { render, screen, waitFor, fireEvent, within } from '@testing-library/rea
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 import { API } from 'constants/api';
+import { PRODUCT_PROPOSAL_ERROR_MESSAGE } from 'constants/app';
 
 const TITLE = "Women's t-shirt";
 const PRICE = '12.24';
@@ -43,8 +44,20 @@ describe('Products page', () => {
   test('Products should show after page loads', async () => {
     render(<Products />);
     await waitFor(() => screen.getByTestId('products-list-container'));
+    expect(screen.queryByTestId('product-fetch-failed')).toBeFalsy();
     expect(screen.getAllByTestId('product-list-item')).toHaveLength(1);
     expect(screen.getByTestId('product-count')).toHaveTextContent('Total products: 1');
+  });
+
+  test('Handle error on fetching products', async () => {
+    server.use(
+      rest.get(API.products, (_req, res, ctx) => {
+        return res(ctx.status(500));
+      })
+    );
+
+    render(<Products />);
+    await waitFor(() => screen.getByTestId('product-fetch-failed'));
   });
 
   test('Modal should open after clicking "Send product proposal" button', () => {
@@ -83,6 +96,39 @@ describe('Products page', () => {
     expect(within(firstProduct).getByTestId('product-title')).toHaveTextContent(TITLE);
     expect(within(firstProduct).getByTestId('product-price')).toHaveTextContent(PRICE);
     expect(within(firstProduct).getByTestId('product-description')).toHaveTextContent(DESCRIPTION);
+  });
+
+  // product-message
+
+  test('Handle error on sending product proposal', async () => {
+    server.use(
+      rest.post(API.products, (_req, res, ctx) => {
+        return res(ctx.status(500));
+      })
+    );
+
+    render(<Products />);
+    await waitFor(() => screen.getByTestId('products-list-container'));
+
+    // Click button for sending product proposal
+    fireEvent.click(screen.getByTestId('send-product-proposal'));
+
+    // Expect form to appear
+    const productForm = screen.getByTestId('form-product-proposal');
+    expect(productForm).toBeVisible();
+
+    // Input the values in the form fields
+    fireEvent.change(within(productForm).getByTestId('form-product-title'), { target: { value: TITLE } });
+    fireEvent.change(within(productForm).getByTestId('form-product-price'), { target: { value: PRICE } });
+    fireEvent.change(within(productForm).getByTestId('form-product-description'), { target: { value: DESCRIPTION } });
+    fireEvent.click(within(productForm).getByTestId('submit-product-proposal'));
+
+    // Form should disappear
+    await waitFor(() => expect(productForm).not.toBeVisible());
+
+    await waitFor(() =>
+      expect(screen.getByTestId('product-message')).toHaveTextContent(PRODUCT_PROPOSAL_ERROR_MESSAGE)
+    );
   });
 
   test('Add to favorites should update UI correctly', async () => {
