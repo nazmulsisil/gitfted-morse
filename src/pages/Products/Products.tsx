@@ -165,14 +165,26 @@ class Products extends React.Component<
       <div className={styles.productsContainer}>
         <div className={header}>
           <div className={classNames(container, headerImageWrapper)}>
-            <img alt="Brand logo" src={logo} className={headerImage} />
+            <img alt="Brand logo" src={logo} className={headerImage} height="60px" width="146px" />
           </div>
         </div>
 
-        <span className={classNames(container, main, heroImageContainer)}>
-          <img alt="Two person working in the factory" src={heroImage1} className={heroImage} />
-          <img alt="IT personnel working in the workplace" src={heroImage2} className={heroImage} />
-        </span>
+        <div className={classNames(container, main, heroImageContainer)}>
+          <img
+            alt="Two person working in the factory"
+            src={heroImage1}
+            className={heroImage}
+            height="240px"
+            width="222px"
+          />
+          <img
+            alt="IT personnel working in the workplace"
+            src={heroImage2}
+            className={heroImage}
+            height="240px"
+            width="222px"
+          />
+        </div>
 
         <div className={classNames(container, main, noPaddingTop)}>
           <div className={buttonWrapper}>

@@ -88,6 +88,7 @@
   display: flex;
   justify-content: space-evenly;
   overflow: hidden;
+  height: 19rem;
 }
 
 .heroImage {
