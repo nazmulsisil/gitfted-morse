@@ -2,7 +2,6 @@
   border: 0;
   cursor: pointer;
   color: #ffffff;
-  font-size: 5ch;
   font-size: 18px;
   background-color: #62bfad;
   border: 0px;
@@ -13,11 +12,4 @@
 
 .button:focus {
   outline: none;
-  margin: inherit;
-  border: inherit;
-  -webkit-align-content: inherit;
-  -webkit-animation-delay: inherit;
-  -webkit-animation-fill-mode: inherit;
-  -webkit-animation-timing-function: inherit;
-  -webkit-box-decoration-break: inherit;
 }

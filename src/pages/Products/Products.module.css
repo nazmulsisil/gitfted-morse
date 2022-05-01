@@ -90,7 +90,6 @@
 }
 
 .heroImageContainer {
-  margin: 50px inherit;
   display: flex;
   justify-content: space-evenly;
   overflow: hidden;
@@ -107,5 +106,5 @@
 
 .container {
   max-width: 750px;
-  margin: auto;
+  margin: 0 auto;
 }

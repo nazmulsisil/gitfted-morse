@@ -3,12 +3,11 @@
   background-color: #ffffff;
   border: 1px solid #e3e4e8;
   padding: 16px 12px 9px;
-  border-radius: calc(1.5 * 4px);
+  border-radius: 6px;
   width: 100%;
   height: auto;
   padding: 16px 24px 8px;
   padding-right: 24px;
-  margin: inherit;
 }
 
 .product:not(:last-child) {
@@ -16,7 +15,6 @@
 }
 
 .productTitle {
-  font-size: 4rem;
   font-size: 24px;
   font-weight: 600;
   margin: 0 0 16px;

@@ -1,11 +1,9 @@
 .form {
-  font-family: 'Open Sans';
   display: flex;
   flex-direction: column;
 }
 
 .label {
-  font-family: 'Open Sans';
   color: #0f2137;
   font-weight: 600;
   margin-bottom: 8px;
@@ -22,7 +20,6 @@
 }
 
 .input:focus {
-  font-family: 'Open Sans';
   outline: none;
   border: 1px solid #62bfad;
 }
@@ -39,7 +36,6 @@
 }
 
 .textarea:focus {
-  font-family: 'Open Sans';
   outline: none;
   border: 1px solid #62bfad;
 }
