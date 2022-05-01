@@ -4,6 +4,7 @@ import { FaStar } from 'react-icons/fa';
 import styles from './ProductList.module.css';
 import { formatPrice } from 'utils/formatPrice';
 import classNames from 'classnames';
+import { Button } from 'components/Button';
 
 const Product: React.FC<{
   index: number;
@@ -49,11 +50,10 @@ const Product: React.FC<{
       </p>
 
       <span className={actionBar}>
-        <span
+        <Button
           className={classNames(actionBarItem, {
             active: product.isFavorite
           })}
-          role="button"
           onClick={() => {
             onFav(product.title);
           }}
@@ -62,7 +62,7 @@ const Product: React.FC<{
           <span data-testid="add-remove-favorites" className={actionBarItemLabel}>
             {!!!!product.isFavorite ? 'Remove from favorites' : 'Add to favorites'}
           </span>
-        </span>
+        </Button>
       </span>
     </span>
   );

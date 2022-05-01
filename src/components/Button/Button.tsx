@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import * as React from 'react';
 import styles from './Button.module.css';
 
@@ -5,10 +6,15 @@ interface props {
   children: any;
   onClick?: () => void;
   testid?: string;
+  className?: string;
 }
 
-const Button: React.FC<props> = ({ children, onClick, testid }) => (
-  <button className={styles.button} onClick={onClick} {...(testid ? { 'data-testid': testid } : {})}>
+const Button: React.FC<props> = ({ children, onClick, testid, className }) => (
+  <button
+    className={classNames(styles.button, className)}
+    onClick={onClick}
+    {...(testid ? { 'data-testid': testid } : {})}
+  >
     {children}
   </button>
 );
