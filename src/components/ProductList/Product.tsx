@@ -20,20 +20,12 @@ export const Product: React.FC<{
   product: ProductItem;
   onFav: OnFav;
 }> = ({ product, onFav }) => {
-  const {
-    product: productClass,
-    productBody,
-    actionBarItem,
-    actionBarItemLabel,
-    productListItem,
-    productTitle,
-    actionBar
-  } = styles;
+  const { product: productClass, productBody, actionBarItem, actionBarItemLabel, productTitle, actionBar } = styles;
 
   const { title, rating, price, description, isFavorite, id } = product;
 
   return (
-    <span data-testid="product-list-item" className={classNames(productListItem, productClass)}>
+    <div data-testid="product-list-item" className={productClass}>
       <span data-testid="product-title" className={productTitle}>
         {title}
       </span>
@@ -69,6 +61,6 @@ export const Product: React.FC<{
           </span>
         </Button>
       </span>
-    </span>
+    </div>
   );
 };
