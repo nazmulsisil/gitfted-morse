@@ -98,8 +98,6 @@ describe('Products page', () => {
     expect(within(firstProduct).getByTestId('product-description')).toHaveTextContent(DESCRIPTION);
   });
 
-  // product-message
-
   test('Handle error on sending product proposal', async () => {
     server.use(
       rest.post(API.products, (_req, res, ctx) => {
