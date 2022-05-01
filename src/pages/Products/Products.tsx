@@ -66,7 +66,7 @@ class Products extends React.Component<
       })
       .then((products: ResponseProduct[]) => {
         this.setState({
-          products,
+          products: products.reverse(),
           prodCount: products.length,
           loading: false
         });
