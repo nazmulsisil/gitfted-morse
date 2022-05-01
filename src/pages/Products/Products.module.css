@@ -91,6 +91,12 @@
   height: 19rem;
 }
 
+@media (max-width: 48em) {
+  .heroImageContainer {
+    grid-gap: 0.5rem;
+  }
+}
+
 .heroImage {
   max-height: 15rem;
   display: block;
