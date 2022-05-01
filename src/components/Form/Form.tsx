@@ -34,9 +34,12 @@ const Form: React.FC<FormProps> = (props) => {
 
   return (
     <form data-testid="form-product-proposal" className={form} onSubmit={handleSubmit(onSubmit)}>
-      <span className={label}>Product title: *</span>
+      <label htmlFor="form-product-title" className={label}>
+        Product title: *
+      </label>
 
       <input
+        id="form-product-title"
         data-testid="form-product-title"
         placeholder="Title..."
         defaultValue=""
@@ -45,10 +48,13 @@ const Form: React.FC<FormProps> = (props) => {
       />
       <div className={error}>{errors?.title?.type === 'required' && <span>Your product needs a title</span>}</div>
 
-      <span className={label}>Product details: *</span>
+      <label htmlFor="form-product-price" className={label}>
+        Product details: *
+      </label>
 
       <input
         data-testid="form-product-price"
+        id="form-product-price"
         placeholder="Price..."
         defaultValue=""
         className={input}
