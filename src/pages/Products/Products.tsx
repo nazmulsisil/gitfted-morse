@@ -31,7 +31,7 @@ class Products extends React.Component<
     prodCount: number;
   }
 > {
-  constructor(props: any) {
+  constructor(props: {}) {
     super(props);
 
     this.favClick = this.favClick.bind(this);
@@ -64,7 +64,7 @@ class Products extends React.Component<
     const prods = this.state.products;
     const idx = prods.findIndex((el) => el.id === id);
     let currentFavs = this.state.numFavorites;
-    let totalFavs: any;
+    let totalFavs: number;
 
     if (prods[idx].isFavorite) {
       prods[idx].isFavorite = false;
@@ -142,11 +142,11 @@ class Products extends React.Component<
           <div className={buttonWrapper}>
             <Button
               testid="send-product-proposal"
-              onClick={function (this: any) {
+              onClick={() =>
                 this.setState({
                   isOpen: true
-                });
-              }.bind(this)}
+                })
+              }
             >
               Send product proposal
             </Button>
@@ -179,11 +179,11 @@ class Products extends React.Component<
           <div className={modalContentHelper}>
             <div
               className={modalClose}
-              onClick={function (this: any) {
+              onClick={() => {
                 this.setState({
                   isOpen: false
                 });
-              }.bind(this)}
+              }}
             >
               <FaTimes />
             </div>
